@@ -8,12 +8,13 @@
             max-width: 80%;
             height: auto;
         }
-
     </style>
 {% endblock %}
 
 {% block content %}
-    {% if graph %}
+    {% if error_message %}
+    <p class="error-message">{{ error_message }}</p>
+    {% elif graph %}
         <h3>Price History for {{ product.name }}</h3>
         <img src="data:image/png;base64,{{ graph }}" alt="Price History Graph">
     {% else %}

@@ -91,9 +91,18 @@ def product_price_graph(request):
         print("in POST of product_price_graph")
         url = request.POST.get('url')
         print(url)
-        graph = generate_price_graph(url)
-        product = Product.objects.get(url=url)
-        return render(request, 'price_graph.html', {'graph': graph, 'product': product})
+        if not url:
+            # If no URL is provided in POST
+            return render(request, 'price_graph.html', {'error_message': "No product has been selected. Please select a product to show the price graph."})
+        
+        try:
+            product = Product.objects.get(url=url)
+            graph = generate_price_graph(url)
+            return render(request, 'price_graph.html', {'graph': graph, 'product': product})
+        except Product.DoesNotExist:
+            # If the product doesn't exist in the database
+            return render(request, 'price_graph.html', {'error_message': "The selected product does not exist."})
     else:
         print("not in POST")
-        return render(request, 'price_graph.html')
+        # Handle GET requests
+        return render(request, 'price_graph.html', {'error_message': "No product has been selected. Please select a product to show the price graph."})
