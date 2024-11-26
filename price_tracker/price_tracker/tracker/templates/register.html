@@ -1,0 +1,50 @@
+{% extends base_template %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Register</h2>
+
+    {% if already_logged_in %}
+        <div class="alert alert-warning">
+            You're already logged in. You need to log out to register another account.
+        </div>
+    {% else %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Table Layout for Form Fields -->
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="text-end"><label for="id_username">Username</label></td>
+                                    <td>{{ form.username }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-end"><label for="id_email">Email</label></td>
+                                    <td>{{ form.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-end"><label for="id_password1">Password</label></td>
+                                    <td>{{ form.password }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-end"><label for="id_password2">Confirm Password</label></td>
+                                    <td>{{ form.password_confirm }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Add a submit button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary w-100 logreg-btn">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

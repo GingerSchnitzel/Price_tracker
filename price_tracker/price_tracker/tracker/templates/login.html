@@ -1,0 +1,46 @@
+{% extends 'login_base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Login</h2>
+
+    {% if messages %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm">
+                <form method="post">
+                    {% csrf_token %}
+
+                    <!-- Table Layout for Form Fields -->
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="text-end"><label for="username">Username</label></td>
+                                <td><input type="text" id="username" name="username" required class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label for="password">Password</label></td>
+                                <td><input type="password" id="password" name="password" required class="form-control"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary w-100 logreg-btn">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

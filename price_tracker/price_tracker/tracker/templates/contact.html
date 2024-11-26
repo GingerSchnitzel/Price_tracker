@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block extra_styles %}
+<style>
+.submit-btn {
+    padding: 8px 12px;
+    background-color: #FFA500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.submit-btn:hover {
+    background-color: #b97800;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center">Contact Us</h1>
+
+                {% if messages %}
+                    <ul class="alert alert-info">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <table class="table">
+                        <tr>
+                            <td><label for="id_name">Name:</label></td>
+                            <td>{{ form.name }}</td>
+                        </tr>
+                        <tr>
+                            <td><label for="id_email">Email:</label></td>
+                            <td>{{ form.email }}</td>
+                        </tr>
+                        <tr>
+                            <td><label for="id_message">Message:</label></td>
+                            <td>{{ form.message }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button type="submit" class="btn btn-primary submit-btn">Send</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

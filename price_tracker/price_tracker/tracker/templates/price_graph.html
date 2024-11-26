@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block extra_styles %}
+    <style>
+        h2 {
+            color: #333;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% if graph %}
+        <h3>Price History for {{ product.name }}</h3>
+        <img src="data:image/png;base64,{{ graph }}" alt="Price History Graph">
+    {% else %}
+        <p>Graph not available.</p>
+{% endif %}
+{% endblock %}
