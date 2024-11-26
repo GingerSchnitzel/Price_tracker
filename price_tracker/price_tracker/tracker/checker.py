@@ -25,6 +25,8 @@ def write_last_checked():
         file.write(str(time.time()))  # Store current timestamp in seconds
 
 def periodic_check():
+    #Wait some time so that server starts properly
+    time.sleep(5)
     print("Thread started!")
     last_checked = read_last_checked()
     if last_checked is not None:
@@ -55,7 +57,7 @@ def check_prices():
             #Sleep for a bit so emag doesn't  detect us as a bot
             if price is None:
                 print(f'Failed to get price for {product.name}')
-                time.sleep(10)
+                time.sleep(15)
                 continue
             all_fail = False
         
@@ -89,7 +91,7 @@ def check_prices():
                     username = f"{interest.user.first_name} {interest.user.last_name}".strip() or interest.user.username
                     send_email(receiver_email, username, product.name, price, product.image_url)
 
-            time.sleep(10)
+            time.sleep(15)
 
         except Exception as e:
             print(f"Error in thread: {e}")

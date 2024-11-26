@@ -11,6 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 from tracker.checker import start_thread  # Import the thread starter
+#Placed here because this code is only run once when the server starts (we only want to start one thread)
 start_thread()
 
 
