@@ -6,7 +6,7 @@ Aplicația "Price Tracker" este destinată monitorizării fluctuațiilor de pre�
 Pasul 1: Clonarea Repozitoriului
 Pentru a începe, clonează repo-ul Git al aplicației pe calculatorul tău:
 
-git clone https://github.com/username/price-tracker.git
+git clone https://github.com/GingerSchnitzel/Price_tracker.git
 cd price-tracker
 
 Pasul 2: Crearea unui mediu virtual
